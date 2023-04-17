@@ -6,11 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public abstract class Base_Page {
+public abstract class BasePage {
 
     protected WebDriver driver;
 
-    Base_Page() {
+    BasePage() {
         this.driver = Driver.getDriver();
         PageFactory.initElements(driver, this);
     }
