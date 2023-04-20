@@ -6,6 +6,9 @@ import org.openqa.selenium.support.FindBy;
 public class MainPage extends BasePage {
 
     @FindBy(xpath = "//button[@type='button']")
-    public WebElement searchButton;
+    private WebElement searchButton;
 
+    public WebElement getSearchButton() {
+        return searchButton;
+    }
 }

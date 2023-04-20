@@ -1,6 +1,7 @@
 package com.kamil_demo.tests;
 
 
+import com.kamil_demo.pages.MainPage;
 import com.kamil_demo.utilities.ConfigurationReader;
 import com.kamil_demo.utilities.Driver;
 import org.apache.commons.io.FileUtils;
@@ -8,6 +9,8 @@ import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -20,6 +23,9 @@ import java.util.concurrent.TimeUnit;
 public class Hooks {
 
     public static WebDriver driver;
+    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+
+    MainPage mainPage = new MainPage();
 
     @BeforeMethod
     public void setUp() {
@@ -27,6 +33,8 @@ public class Hooks {
         driver.get(ConfigurationReader.getProperty("base_url"));
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        wait.until(ExpectedConditions.visibilityOf(mainPage.getSearchButton())).click();
+
     }
 
 

@@ -11,16 +11,20 @@ import java.util.List;
 public class AllListingsPage extends BasePage {
 
     @FindBy(xpath = "//span[@class='sc-eGJWMs lkeyLH']/span")
-    public WebElement allAmount;
+    private WebElement allAmount;
+
+    public WebElement getAllAmount() {
+        return allAmount;
+    }
 
     @FindBy(xpath = "//a[@href='/terms-and-conditions']")
-    public WebElement termsCondition;
+    private WebElement termsCondition;
 
     @FindBy(xpath = "//div[@class='sc-gSYDnn wmfak']")
-    public List<WebElement> properties;
+    private List<WebElement> properties;
 
     @FindBy(css = ".sc-tsGVs.hebieQ")
-    public WebElement loaderMask;
+    private WebElement loaderMask;
 
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 3);
 
@@ -34,7 +38,7 @@ public class AllListingsPage extends BasePage {
         }
     }
 
-    public int getAllAmount() {
+    public int getAllAmounts() {
         String org_number = allAmount.getText();
         String number = org_number.substring(1, org_number.length() - 1);
         int num = Integer.parseInt(number);
@@ -42,7 +46,7 @@ public class AllListingsPage extends BasePage {
     }
 
     public int movingLastProperties() {
-        int num = getAllAmount();
+        int num = getAllAmounts();
         for (int i = 0; i < (num / 15); i++) {
             ((JavascriptExecutor) Driver.getDriver()).executeScript("window.scrollBy(0,10000)");
             waitUntilLoaderMaskDisappear();
@@ -51,7 +55,6 @@ public class AllListingsPage extends BasePage {
         WebElement lastItem = Driver.getDriver().findElement(By.xpath(lastElementXpath));
         wait.until(ExpectedConditions.elementToBeClickable(lastItem));
         return properties.size();
-
     }
 
 

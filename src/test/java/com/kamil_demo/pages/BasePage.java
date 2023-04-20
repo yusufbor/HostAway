@@ -16,13 +16,18 @@ public abstract class BasePage {
     }
 
     @FindBy(xpath = "//a[.='Test']")
-    public WebElement testTitle;
+    private WebElement testTitle;
 
     @FindBy(xpath = "//a[.='All listings']")
-    public WebElement allListings;
+    private WebElement allListings;
 
     @FindBy(xpath = "//a[.='About Us']")
-    public WebElement aboutUs;
+    private WebElement aboutUs;
+
+
+    public WebElement getAllListings() {
+        return allListings;
+    }
 
 
 }

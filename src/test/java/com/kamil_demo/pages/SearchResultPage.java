@@ -12,36 +12,38 @@ import java.util.List;
 
 public class SearchResultPage extends BasePage {
 
+    FilterPage filterPage = new FilterPage();
+
     @FindBy(xpath = "//div[@class='sc-eSoXWK WzEhh']")
-    public WebElement location;
+    private WebElement location;
 
     @FindBy(xpath = "//div[@class='sc-bXmHAB bMdeOs']")
-    public WebElement checkIn;
+    private WebElement checkIn;
 
     @FindBy(xpath = "//div[@class='sc-cTsKDU iKqGfS']")
-    public WebElement checkOut;
+    private WebElement checkOut;
 
     @FindBy(xpath = "//div[@class='sc-ezHeEz cIKEHp']")
-    public WebElement guests;
+    private WebElement guests;
 
     @FindBy(xpath = "//button[@class='sc-fWWYYk sc-gzcbmu bZTTYU fKwyEY']")
-    public WebElement guestsIncr;
+    private WebElement guestsIncr;
 
     @FindBy(xpath = "//button[@class='sc-fWWYYk sc-fIxmyt bZTTYU cnkbFD']")
-    public WebElement guestsDecr;
+    private WebElement guestsDecr;
 
 
     @FindBy(xpath = "//span[.='Filter']")
-    public WebElement filterButton;
+    private WebElement filterButton;
 
     @FindBy(css = ".sc-iJCRrE.iNTqRT")
-    public WebElement closeFilters;
+    private WebElement closeFilters;
 
     @FindBy(xpath = "(//div[@class='sc-fHCHyC crlswz'])[2]//div[.='1']")
-    public WebElement checkOutDate;
+    private WebElement checkOutDate;
 
     @FindBy(xpath = "//span[.='Clear dates']")
-    public WebElement clearDates;
+    private WebElement clearDates;
 
     public void selectingToday() {
 
@@ -63,15 +65,20 @@ public class SearchResultPage extends BasePage {
     }
 
     @FindBy(xpath = "//p[.='To filter by price, please select dates']")
-    public WebElement warningDateMessage;
+    private WebElement warningDateMessage;
 
     @FindBy(css = ".sc-gVFcvn.gnLtVL")
-    public List<WebElement> numberOfAmenities;
+    private List<WebElement> numberOfAmenities;
 
     public void checkingClearAllFunc() {
         for (WebElement numberOfAmenity : numberOfAmenities) {
             String textOfAmenities = numberOfAmenity.getText();
             Assert.assertTrue(textOfAmenities.equalsIgnoreCase("0"));
+
+            Assert.assertFalse(filterPage.getAmAirConditioning().isSelected(), "Clear button is not working");
+            Assert.assertFalse(filterPage.getAmSwimmingPool().isSelected(), "Clear button is not working");
+            Assert.assertFalse(filterPage.getAmFreeWifi().isSelected(), "Clear button is not working");
+
         }
     }
 
@@ -84,5 +91,55 @@ public class SearchResultPage extends BasePage {
         System.out.println("Max count for guests = " + count);
     }
 
+    public FilterPage getFilterPage() {
+        return filterPage;
+    }
 
+    public WebElement getLocation() {
+        return location;
+    }
+
+    public WebElement getCheckIn() {
+        return checkIn;
+    }
+
+    public WebElement getCheckOut() {
+        return checkOut;
+    }
+
+    public WebElement getGuests() {
+        return guests;
+    }
+
+    public WebElement getGuestsIncr() {
+        return guestsIncr;
+    }
+
+    public WebElement getGuestsDecr() {
+        return guestsDecr;
+    }
+
+    public WebElement getFilterButton() {
+        return filterButton;
+    }
+
+    public WebElement getCloseFilters() {
+        return closeFilters;
+    }
+
+    public WebElement getCheckOutDate() {
+        return checkOutDate;
+    }
+
+    public WebElement getClearDates() {
+        return clearDates;
+    }
+
+    public WebElement getWarningDateMessage() {
+        return warningDateMessage;
+    }
+
+    public List<WebElement> getNumberOfAmenities() {
+        return numberOfAmenities;
+    }
 }
