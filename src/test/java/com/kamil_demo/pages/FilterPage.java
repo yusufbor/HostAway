@@ -118,6 +118,34 @@ public class FilterPage extends BasePage {
         return amAirConditioning;
     }
 
+    public WebElement getAmBeachFront() {
+        return amBeachFront;
+    }
+
+    public WebElement getAmKitchen() {
+        return amKitchen;
+    }
+
+    public WebElement getAmWashingMachine() {
+        return amWashingMachine;
+    }
+
+    public WebElement getAmPetsAllowed() {
+        return amPetsAllowed;
+    }
+
+    public WebElement getAmHotTub() {
+        return amHotTub;
+    }
+
+    public WebElement getAmStreetParking() {
+        return amStreetParking;
+    }
+
+    public WebElement getAmSuitableForChildren() {
+        return amSuitableForChildren;
+    }
+
     public void select_all_amenities() {
         amBeachFront.click();
         amSwimmingPool.click();

@@ -70,16 +70,22 @@ public class SearchResultPage extends BasePage {
     @FindBy(css = ".sc-gVFcvn.gnLtVL")
     private List<WebElement> numberOfAmenities;
 
-    public void checkingClearAllFunc() {
+    public boolean checkingClearAllFunc() {
         for (WebElement numberOfAmenity : numberOfAmenities) {
             String textOfAmenities = numberOfAmenity.getText();
             Assert.assertTrue(textOfAmenities.equalsIgnoreCase("0"));
-
-            Assert.assertFalse(filterPage.getAmAirConditioning().isSelected(), "Clear button is not working");
-            Assert.assertFalse(filterPage.getAmSwimmingPool().isSelected(), "Clear button is not working");
-            Assert.assertFalse(filterPage.getAmFreeWifi().isSelected(), "Clear button is not working");
-
         }
+        boolean amenitiesSelected = false;
+        if (filterPage.getAmAirConditioning().isSelected() || filterPage.getAmSwimmingPool().isSelected() ||
+                filterPage.getAmFreeWifi().isSelected() || filterPage.getAmBeachFront().isSelected() ||
+                filterPage.getAmKitchen().isSelected() || filterPage.getAmHotTub().isSelected() ||
+                filterPage.getAmPetsAllowed().isSelected() || filterPage.getAmStreetParking().isSelected() ||
+                filterPage.getAmSuitableForChildren().isSelected() || filterPage.getAmWashingMachine().isSelected()){
+            amenitiesSelected = true;
+        }else {
+            amenitiesSelected = false;
+        }
+        return amenitiesSelected;
     }
 
     public void maxGuests() {

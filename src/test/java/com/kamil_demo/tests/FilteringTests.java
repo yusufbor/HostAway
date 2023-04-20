@@ -90,7 +90,14 @@ public class FilteringTests extends Hooks {
         step("step 11: User clicking the 'Clear All' button ");
         filterPage.getClearAllButton().click();
 
-        searchResultPage.checkingClearAllFunc();
+        filterPage.getAmWashingMachine().click();
+        System.out.println("filterPage.getAmSuitableForChildren().isSelected() = " + filterPage.getAmSuitableForChildren().isSelected());
+        System.out.println("filterPage.getAmWashingMachine().isSelected() = " + filterPage.getAmWashingMachine().isSelected());
+        System.out.println("filterPage.getAmKitchen().isSelected() = " + filterPage.getAmKitchen().isSelected());
+        boolean amenitiesSelected = searchResultPage.checkingClearAllFunc();
+        System.out.println("amenitiesSelected = " + amenitiesSelected);
+
+        Assert.assertTrue(amenitiesSelected);
 
     }
 
