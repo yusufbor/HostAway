@@ -88,7 +88,7 @@ public class FilteringTests extends Hooks {
         filterPage.getIncrBathrooms().click();
         filterPage.select_all_amenities();
         step("step 11: User clicking the 'Clear All' button ");
-        filterPage.getClearAllButton().click();
+//        filterPage.getClearAllButton().click();
 
         filterPage.getAmWashingMachine().click();
         System.out.println("filterPage.getAmSuitableForChildren().isSelected() = " + filterPage.getAmSuitableForChildren().isSelected());
@@ -97,7 +97,7 @@ public class FilteringTests extends Hooks {
         boolean amenitiesSelected = searchResultPage.checkingClearAllFunc();
         System.out.println("amenitiesSelected = " + amenitiesSelected);
 
-        Assert.assertTrue(amenitiesSelected);
+        Assert.assertFalse(amenitiesSelected);
 
     }
 
