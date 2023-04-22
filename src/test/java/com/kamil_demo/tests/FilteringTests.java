@@ -87,10 +87,19 @@ public class FilteringTests extends Hooks {
         filterPage.getIncrBedrooms().click();
         filterPage.getIncrBathrooms().click();
         filterPage.select_all_amenities();
-        step("step 11: User clicking the 'Clear All' button ");
+        step("step 11: All amenities should be selected but its not actually selected!!! ");
 //        filterPage.getClearAllButton().click();
-
+        System.out.println("filterPage.getPriceFrom().getText() = " + filterPage.getPriceFrom().getText());
         filterPage.getAmWashingMachine().click();
+        filterPage.getApplyButton().click();
+        searchResultPage.getFilterButton().click();
+        System.out.println("filterPage.getAmHotTub().isSelected() = " + filterPage.getAmHotTub().isSelected());
+        System.out.println("filterPage.getAmPetsAllowed().isSelected() = " + filterPage.getAmPetsAllowed().isSelected());
+        System.out.println("filterPage.getAmStreetParking().isSelected() = " + filterPage.getAmStreetParking().isSelected());
+        System.out.println("filterPage.getAmSwimmingPool().isSelected() = " + filterPage.getAmSwimmingPool().isSelected());
+        System.out.println("filterPage.getAmBeachFront().isSelected() = " + filterPage.getAmBeachFront().isSelected());
+        System.out.println("filterPage.getAmFreeWifi().isSelected() = " + filterPage.getAmFreeWifi().isSelected());
+        System.out.println("filterPage.getAmAirConditioning().isSelected() = " + filterPage.getAmAirConditioning().isSelected());
         System.out.println("filterPage.getAmSuitableForChildren().isSelected() = " + filterPage.getAmSuitableForChildren().isSelected());
         System.out.println("filterPage.getAmWashingMachine().isSelected() = " + filterPage.getAmWashingMachine().isSelected());
         System.out.println("filterPage.getAmKitchen().isSelected() = " + filterPage.getAmKitchen().isSelected());
